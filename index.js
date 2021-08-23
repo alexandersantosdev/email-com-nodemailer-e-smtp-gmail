@@ -2,9 +2,9 @@ const fs = require('fs');
 const nodemailer = require('nodemailer');
 require('dotenv').config()
 
-const lista_csv = fs.readFileSync(__dirname + '/lista_emails.csv', 'utf-8')
+const list_csv = fs.readFileSync(__dirname + '/lista_emails.csv', 'utf-8')
 
-const lista = lista_csv.split(/\r?\n|\r/g)
+const list = list_csv.split(/\r?\n|\r/g)
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -23,11 +23,11 @@ const attachments = attachments_list.map(attachment => {
     }
 })
 
-for (contato of lista) {
+for (contact of lista) {
 
-    let [nome, email] = contato.split(',')
+    let [name, email] = contact.split(',')
     let subject = 'Email de teste'
-    let text = fs.readFileSync(__dirname + '/message.txt', 'utf-8').replace('${nome}', nome)
+    let text = fs.readFileSync(__dirname + '/message.txt', 'utf-8').replace('${name}', name)
 
     const mailOptions = {
         from: process.env.USER,

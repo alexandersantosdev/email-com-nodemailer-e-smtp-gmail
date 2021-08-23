@@ -1,1 +1,1 @@
-Olá ${nome} este é um teste de envio de email com NODEJS
+Olá ${name} este é um teste de envio de email com NODEJS
