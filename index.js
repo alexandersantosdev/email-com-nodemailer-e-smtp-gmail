@@ -16,10 +16,10 @@ const transporter = nodemailer.createTransport({
 
 const attachments_list = fs.readdirSync(__dirname + '/attachments')
 
-const attachments = attachments_list.map(a => {
+const attachments = attachments_list.map(attachment => {
     return {
-        filename: a,
-        path: `./attachments/${a}`
+        filename: attachment,
+        path: `./attachments/${attachment}`
     }
 })
 
@@ -35,7 +35,6 @@ for (contato of lista) {
         subject,
         text,
         attachments
-
     }
 
     transporter.sendMail(mailOptions, (err, info) => {
